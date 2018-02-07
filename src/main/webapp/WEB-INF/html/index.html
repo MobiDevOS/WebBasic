@@ -4,7 +4,32 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+
+<a href="/requestHead">请求头测试</a>
+
+
+<p><a href="/requestCookies">测试cookies</a></p>
+<p><a href="requestGet?username=zhujiule&age=1">测试get请求带参数</a></p>
+
+
+<!--测试put-->
+<form action="/testrequet/requestPut/1" method="post"
+>
+    <input value="put" type="hidden" name = "_method"></input>
+    <input value="submit" type="submit"></input>
+
+</form>
+
+<!--测试上传post-->
+<form action="/testrequet/requestPost" method="post"
+>
+    <input value="submit" type="submit"></input>
+
+</form>
+
+
+<a href="/testrequet/requestGet">测试get请求</a>
+
 
 <h1>test html </h1>
 
