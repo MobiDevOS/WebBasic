@@ -1,13 +1,20 @@
 package com.github.dispatch;
 
 import com.github.dispatch.bean.User;
+import com.sun.deploy.net.HttpResponse;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.HttpRequestHandler;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Map;
 
+@SessionAttributes(types = {String.class} ,value = {"user"})
 @Controller
 public class IndexDispatch {
 
@@ -50,4 +57,39 @@ public class IndexDispatch {
         System.out.println(mUser.toString());
         return "resultPage";
     }
+
+//
+    //测试cookies
+    @RequestMapping(value = "/sevletapi")
+    public String testSevletApi(HttpServletRequest mRquestHandler, HttpServletResponse mResponse){
+
+        return "resultPage";
+    }
+
+
+    //相当于给model 数据封装到request中
+    @RequestMapping(value = "/testModelAndView")
+    public ModelAndView testModelAndView(){
+        ModelAndView modelAndView = new ModelAndView("resultPage");
+        modelAndView.addObject("time",new Date());
+        return modelAndView;
+    }
+
+
+    //相当于其实入参对象应该是 BindingAawreModelAndMap 或者是model or MorderAndView 都是 相关类
+    @RequestMapping(value = "/testMapping")
+    public String testMap(Map<String,Object> map){
+        map.put("list", Arrays.asList(new String[]{"tom","jack"}));
+        return "resultPage";
+    }
+
+
+    //相当于其实入参对象应该是 BindingAawreModelAndMap 或者是model or MorderAndView 都是 相关类
+    @RequestMapping(value = "/testSessionAttributes")
+    public String testSessionAttributes(Map<String,Object> map){
+        map.put("user", new User("zhujohnle","123"));
+        map.put("lev", "goods");
+        return "resultPage";
+    }
+
 }

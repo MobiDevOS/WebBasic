@@ -13,6 +13,17 @@
 </head>
 
 <p>result page</p>
+
+
+request域名的相关取值问题
+<p> ${requestScope.get("time")}</p>
+<p> ${requestScope.get("list")}</p>
+
+session域的相关取值问题：
+<p> ${sessionScope.get("user")}</p>
+<p> ${sessionScope.get("lev")}</p>
+
+
 <body>
 
 </body>

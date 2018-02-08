@@ -43,4 +43,9 @@ public class User {
                 ", mAddress=" + mAddress +
                 '}';
     }
+
+    public User(String mUserName, String mUserAge) {
+        this.mUserName = mUserName;
+        this.mUserAge = mUserAge;
+    }
 }
